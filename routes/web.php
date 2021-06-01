@@ -20,3 +20,6 @@ Route::get('/', function () {
 
 Route::get('/scraping', [ScrapingController::class, 'extractCover'])->name('solicitud');
 Route::get('/detail', [ScrapingController::class, 'extractDetail'])->name('solicitudDetalle');
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
