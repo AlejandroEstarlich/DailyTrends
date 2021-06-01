@@ -611,16 +611,15 @@ class Crawler implements \Countable, \IteratorAggregate
                 return $default;
             }
 
-            throw new \InvalidArgumentException('The current node list is empty.');
+            //throw new \InvalidArgumentException('The current node list is empty.');
+        } else {
+            $text = $this->getNode(0)->nodeValue;
+            if ($normalizeWhitespace) {
+                return trim(preg_replace('/(?:\s{2,}+|[^\S ])/', ' ', $text));
+            }
+    
+            return $text;
         }
-
-        $text = $this->getNode(0)->nodeValue;
-
-        if ($normalizeWhitespace) {
-            return trim(preg_replace('/(?:\s{2,}+|[^\S ])/', ' ', $text));
-        }
-
-        return $text;
     }
 
     /**
