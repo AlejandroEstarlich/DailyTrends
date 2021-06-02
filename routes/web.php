@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ScrapingController;
+use App\Http\Controllers\FeedController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,10 +14,13 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+// Rutas de la Home
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Rutas del feed
+Route::get('/crear-articulo', [FeedController::class, 'createArticle'])->middleware(['auth'])->name('createArticle');
+Route::post('/guardar-articulo', [FeedController::class, 'saveArticle'])->middleware(['auth'])->name('saveArticle');
 
 Route::get('/scraping', [ScrapingController::class, 'extractCover'])->name('solicitud');
 Route::get('/detail', [ScrapingController::class, 'extractDetail'])->name('solicitudDetalle');
