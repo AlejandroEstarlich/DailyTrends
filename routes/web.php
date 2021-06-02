@@ -23,6 +23,9 @@ Route::get('/crear-articulo', [FeedController::class, 'createArticle'])->middlew
 Route::post('/guardar-articulo', [FeedController::class, 'saveArticle'])->middleware(['auth'])->name('saveArticle');
 Route::get('/miniatura/{filename}', [FeedController::class, 'getImage'])->name('imageArticle');
 Route::get('/feed/{feedId}',[FeedController::class, 'getArticle'])->name('articleDetail');
+Route::get('/borrar-articulo/{feedId}',[FeedController::class, 'delete'])->middleware(['auth'])->name('deleteArticle');
+Route::get('/editar-articulo/{feedId}',[FeedController::class, 'edit'])->middleware(['auth'])->name('editArticle');
+Route::post('/actualizar-articulo/{feedId}',[FeedController::class, 'update'])->middleware(['auth'])->name('updateArticle');
 
 Route::get('/scraping', [ScrapingController::class, 'extractCover'])->name('solicitud');
 Route::get('/detail', [ScrapingController::class, 'extractDetail'])->name('solicitudDetalle');

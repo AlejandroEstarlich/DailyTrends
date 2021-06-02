@@ -16,6 +16,11 @@
                         <p class="mb-2">{{$feed->user->name}}</p>
                         <a class="d-block text-dark " href="{{route('articleDetail', ['feedId' => $feed->id])}}"><b>Leer artículo completo</b> <i class="far fa-arrow-right"></i></a>
                         <br>
+                        <!-- Botones de eliminar y editar -->
+                        @if(Auth::check() && Auth::user()->id == $feed->user->id)
+                            <a href="{{url('/editar-articulo/'.$feed->id)}}" class="btn btn-warning">Editar</a>
+                            <a href="{{url('/borrar-articulo/'.$feed->id)}}" class="btn btn-danger">Borrar</a>
+                        @endif
                     </div>     
                 </div>
             @endforeach
