@@ -22,6 +22,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('/crear-articulo', [FeedController::class, 'createArticle'])->middleware(['auth'])->name('createArticle');
 Route::post('/guardar-articulo', [FeedController::class, 'saveArticle'])->middleware(['auth'])->name('saveArticle');
 Route::get('/miniatura/{filename}', [FeedController::class, 'getImage'])->name('imageArticle');
+Route::get('/feed/{feedId}',[FeedController::class, 'getArticle'])->name('articleDetail');
 
 Route::get('/scraping', [ScrapingController::class, 'extractCover'])->name('solicitud');
 Route::get('/detail', [ScrapingController::class, 'extractDetail'])->name('solicitudDetalle');

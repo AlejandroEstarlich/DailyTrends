@@ -29,6 +29,7 @@ class FeedController extends Controller
         return view('articles.createArticle');
     }
 
+    // Método para guardar el artículo
     public function saveArticle(Request $request){
         // Validar formulario
         $validatedData = $this->validate($request, [
@@ -58,8 +59,17 @@ class FeedController extends Controller
         ));
     }
 
+    // Método para obtener la imagen
     public function getImage($filename){
         $file = Storage::disk('images')->get($filename);
         return new Response($file, 200);
+    }
+
+    // Método para obtener el detalle del artículo
+    public function getArticle($feedId){
+        $feed = Feed::find($feedId);
+        return view ('articles.feedDetail', array(
+            'detail' => $feed,
+        ));
     }
 }

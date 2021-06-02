@@ -13,7 +13,8 @@
                     </div>
                     <div class="data bg-white py-4 px-4 shadow rounded-bottom">
                         <h4>{{$feed->title}}</h4>
-                        <p class="mb-0">{{$feed->user->name}}</p>
+                        <p class="mb-2">{{$feed->user->name}}</p>
+                        <a class="d-block text-dark " href="{{route('articleDetail', ['feedId' => $feed->id])}}"><b>Leer artículo completo</b> <i class="far fa-arrow-right"></i></a>
                         <br>
                     </div>     
                 </div>
