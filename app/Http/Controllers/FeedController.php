@@ -15,6 +15,15 @@ use Symfony\Component\Mime\MimeTypes;
 
 class FeedController extends Controller
 {
+    // Copiado el método de feed por precaución
+    public function index()
+    {
+        $feed = Feed::orderBy('id', 'desc')->paginate(3);
+        return view('home', array(
+            'feeds' => $feed
+        ));
+    }
+
     // Método para crear artículo
     public function createArticle(){
         return view('articles.createArticle');

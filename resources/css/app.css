@@ -1,2 +1,7 @@
 body, .h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6, p{font-family: 'Montserrat', sans-serif;}
 .cover-image{max-height: 200px;}
+
+/*Navigation*/
+nav a.bg-white{color: #343a40!important; font-weight:bold; background-color: rgba(0, 0, 0, 0) !important; border: 0px !important;}
+nav span.bg-white{display: none;}
+.hidden{display: none;}
