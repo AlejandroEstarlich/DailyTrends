@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\feed;
 
 class HomeController extends Controller
 {
@@ -22,6 +23,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $feed = Feed::orderBy('id', 'desc')->paginate(3);
+        return view('home', array(
+            'feeds' => $feed
+        ));
     }
 }

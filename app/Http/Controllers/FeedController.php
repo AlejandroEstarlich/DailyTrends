@@ -48,4 +48,9 @@ class FeedController extends Controller
             'message' => 'El artículo se ha publicado correctamente'
         ));
     }
+
+    public function getImage($filename){
+        $file = Storage::disk('images')->get($filename);
+        return new Response($file, 200);
+    }
 }
