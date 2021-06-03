@@ -19,7 +19,25 @@
                     <!-- Botones de eliminar y editar -->
                     @if(Auth::check() && Auth::user()->id == $feed->user->id || Auth::check() && Auth::user()->role == 'admin')
                         <a href="{{url('/editar-articulo/'.$feed->id)}}" class="btn btn-warning">Editar</a>
-                        <a href="{{url('/borrar-articulo/'.$feed->id)}}" class="btn btn-danger">Borrar</a>
+                        <a class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#borrar{{$feed->id}}">Borrar</a>
+
+                        <div class="modal fade" id="borrar{{$feed->id}}" tabindex="-1" aria-labelledby="borrarLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="borrarLabel">Eliminar: {{$feed->title}}</h5>
+                                    <i class="fas fa-times" data-bs-dismiss="modal" aria-label="Close"></i>
+                                </div>
+                                <div class="modal-body">
+                                    ¿Seguro que quieres eliminar este artículo?
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                                    <a href="{{route('deleteArticle', ['feedId' => $feed->id])}}" class="btn btn-danger">Eliminar</a>
+                                </div>
+                                </div>
+                            </div>
+                        </div>
                     @endif
                 </div>     
             </div>

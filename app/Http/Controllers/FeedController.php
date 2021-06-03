@@ -18,7 +18,7 @@ class FeedController extends Controller
     // Copiado el método de feed por precaución
     public function index()
     {
-        $feed = Feed::orderBy('id', 'desc')->paginate(3);
+        $feed = Feed::orderBy('created_at', 'desc')->paginate(3);
         return view('home', array(
             'feeds' => $feed
         ));
@@ -77,7 +77,7 @@ class FeedController extends Controller
         $user = \Auth::user();
         $feed = Feed::find($articleId);
 
-        if($user && $feed->publisher == $user->id){
+        if($user && $feed->publisher == $user->id || $user->role == 'admin'){
             // Eliminar imagen
             if($feed->image){
                 Storage::disk('images')->delete($feed->image);
@@ -96,7 +96,7 @@ class FeedController extends Controller
     public function edit($feedId){
         $user = \Auth::user();
         $feed = feed::findOrFail($feedId);
-        if($user && $feed->publisher == $user->id){
+        if($user && $feed->publisher == $user->id || $user->role == 'admin'){
             return view ('articles.editArticle', array(
                 'feed' => $feed,
             ));
@@ -141,9 +141,9 @@ class FeedController extends Controller
 
             return redirect()->route('searchArticle', array('search' => $search));
         }
-        $results = Feed::where('title', 'LIKE', '%'.$search.'%')->paginate(6);
+        $feeds = Feed::where('title', 'LIKE', '%'.$search.'%')->orderBy('updated_at', 'desc')->paginate(6);
         return view('articles.search', array(
-            'results' => $results,
+            'feeds' => $feeds,
             'search' => $search
         ));
     }
