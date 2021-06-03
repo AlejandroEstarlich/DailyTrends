@@ -90,7 +90,7 @@
             </div>
         </nav>
 
-        <main>
+        <main class="overflow-hidden" style="min-height: 85vh;">
             @yield('content')
         </main>
     </div>

@@ -8,9 +8,9 @@
     </div>
 </section>
 <section class="article-content container py-3">
-    <div class="article-image text-center">
+    <div class="article-image text-center overflow-hidden" style="max-width: 100%;">
         @if(Storage::disk('images')->has($detail->image))
-            <img src="{{url('miniatura/'.$detail->image)}}" alt="{{$detail->title}}" class="shadow rounded">
+            <img src="{{url('miniatura/'.$detail->image)}}" alt="{{$detail->title}}" class="shadow rounded d-block m-auto w-100">
         @endif
     </div>
     <div class="article-text py-5">
