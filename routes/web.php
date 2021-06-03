@@ -28,8 +28,8 @@ Route::get('/editar-articulo/{feedId}',[FeedController::class, 'edit'])->middlew
 Route::post('/actualizar-articulo/{feedId}',[FeedController::class, 'update'])->middleware(['auth'])->name('updateArticle');
 Route::get('/buscar/{search?}',[FeedController::class, 'search'])->name('searchArticle');
 
-Route::get('/scraping', [ScrapingController::class, 'extractCover'])->name('solicitud');
-Route::get('/detail', [ScrapingController::class, 'extractDetail'])->name('solicitudDetalle');
+// Route::get('/scraping', [ScrapingController::class, 'extractCover'])->name('solicitud');
+// Route::get('/detail', [ScrapingController::class, 'extractDetail'])->name('solicitudDetalle');
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

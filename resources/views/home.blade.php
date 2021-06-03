@@ -11,4 +11,5 @@
 <h1 class="text-center mb-5"><b>Daily</b>Trends</h1>
 
 @include('articles.feed')
+@include('scraping.news')
 @endsection
