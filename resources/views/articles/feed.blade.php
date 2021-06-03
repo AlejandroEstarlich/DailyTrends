@@ -43,7 +43,7 @@
             </div>
         @endforeach
     </div>
-    <div class="">
+    <div class="m-auto text-right" style="max-width: 90%">
     {{$feeds->links()}}
     </div>
 
