@@ -133,4 +133,18 @@ class FeedController extends Controller
             'message' => 'El artículo se ha actualizado correctamente'
         ));
     }
+
+    public function search($search = null){
+
+        if(is_null($search)){
+            $search = \Request::get('search');
+
+            return redirect()->route('searchArticle', array('search' => $search));
+        }
+        $results = feed::where('title', 'LIKE', '%'.$search.'%')->paginate(6);
+        return view('articles.search', array(
+            'results' => $results,
+            'search' => $search
+        ));
+    }
 }

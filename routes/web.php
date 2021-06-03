@@ -26,6 +26,7 @@ Route::get('/feed/{feedId}',[FeedController::class, 'getArticle'])->name('articl
 Route::get('/borrar-articulo/{feedId}',[FeedController::class, 'delete'])->middleware(['auth'])->name('deleteArticle');
 Route::get('/editar-articulo/{feedId}',[FeedController::class, 'edit'])->middleware(['auth'])->name('editArticle');
 Route::post('/actualizar-articulo/{feedId}',[FeedController::class, 'update'])->middleware(['auth'])->name('updateArticle');
+Route::get('/buscar/{search?}',[FeedController::class, 'search'])->name('searchArticle');
 
 Route::get('/scraping', [ScrapingController::class, 'extractCover'])->name('solicitud');
 Route::get('/detail', [ScrapingController::class, 'extractDetail'])->name('solicitudDetalle');

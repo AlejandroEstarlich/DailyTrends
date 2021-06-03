@@ -42,7 +42,7 @@
                         </li>
 
                     </ul>
-                    <form class="navbar-form mt-auto navbar-left" role="search" action="">
+                    <form class="navbar-form mt-auto navbar-left" role="search" action="{{url('/buscar')}}">
                         <div class="form-group d-inline-flex mb-0">
                             <input type="text" class="form-control" style="min-width: 300px;" placeholder="Busca entre nuestros artículos" name="search"/>
                             <button type="submit" class="btn btn-default">
