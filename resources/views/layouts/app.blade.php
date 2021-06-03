@@ -25,7 +25,7 @@
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-dark shadow-sm">
+        <nav class="navbar navbar-expand-md navbar-light bg-dark shadow-sm position-sticky sticky-top">
             <div class="container">
                 <a class="navbar-brand text-white" href="{{ url('/') }}">
                     DailyTrends
@@ -45,8 +45,8 @@
                     <form class="navbar-form mt-auto navbar-left" role="search" action="{{url('/buscar')}}">
                         <div class="form-group d-inline-flex mb-0">
                             <input type="text" class="form-control" style="min-width: 300px;" placeholder="Busca entre nuestros artículos" name="search"/>
-                            <button type="submit" class="btn btn-default">
-                                <span><i class="fas fa-search text-white"></i></span>
+                            <button type="submit" class="btn btn-default bg-warning">
+                                <span><i class="fas fa-search text-dark"></i></span>
                             </button>
                         </div>
                     </form>
@@ -93,5 +93,6 @@
             @yield('content')
         </main>
     </div>
+    @include('layouts.footer')
 </body>
 </html>
