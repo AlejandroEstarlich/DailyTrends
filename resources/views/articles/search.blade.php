@@ -8,7 +8,7 @@
         <hr class="border-dark">
     </div>
 
-        <div id="feed-list" class="feed-list d-block m-auto" style="max-width: 90%">
+        <div id="feed-list" class="feed-list d-block d-flex flex-wrap m-auto" style="max-width: 90%">
             @if(count($results) >= 1)
                 @foreach($results as $result)
                     <div class="feed-item col-lg-4 my-4">

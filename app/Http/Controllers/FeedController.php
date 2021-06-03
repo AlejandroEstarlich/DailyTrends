@@ -141,7 +141,7 @@ class FeedController extends Controller
 
             return redirect()->route('searchArticle', array('search' => $search));
         }
-        $results = feed::where('title', 'LIKE', '%'.$search.'%')->paginate(6);
+        $results = Feed::where('title', 'LIKE', '%'.$search.'%')->paginate(6);
         return view('articles.search', array(
             'results' => $results,
             'search' => $search
