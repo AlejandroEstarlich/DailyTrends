@@ -10,7 +10,7 @@ trait ScrapingTrait {
 
     public function scrapingElMundo()
     {
-    	$results = array();
+    	$mundo = array();
         $client = new Client();
         $urlWeb = 'https://www.elmundo.es/';
         $page = $client->request('GET', $urlWeb);
@@ -24,40 +24,41 @@ trait ScrapingTrait {
             preg_match('/Redacción: [a-zA-Z áéíóúÁÉÍÓÚñÑ]+ | [a-zA-Z]+.+[a-zA-Z]+ /i', $autorNode, $publish);
             $autor = $publish[0];
 
-            $this->results[0][] = $new->filter('.ue-c-cover-content__headline-group')->text();
-            $this->results[1][] = $autor;
-            $this->results[2][] = $linkNode;
-            $this->results[3][] = "El Mundo";
+
+            $this->mundo[0][] = $new->filter('.ue-c-cover-content__headline-group')->text();
+            $this->mundo[1][] = $autor;
+            $this->mundo[2][] = $linkNode;
+            $this->mundo[3][] = "El Mundo";
 
         });
 
-        $elMundo = $this->results;
+        $elMundo = $this->mundo;
 
         return $elMundo;
     }
 
     public function scrapingElPais()
     {
-        $results = array();
+        $pais = array();
         $client = new Client();
         $urlWeb = 'https://elpais.com/';
         $page = $client->request('GET', $urlWeb);
 
-        $page->filter('.first_column.\|.col.desktop_4.tablet_4.mobile_4')->each(function($new){
+        $page->filter('.b.b__3ad.c_chain.\|.row.margin_bottom_sm .story_card')->each(function($new){
             $titleHtml = $new->filter('.c_h.headline')->html();
-            $autorNode = $new->filter('.byline')->text();
+            $autorNode = $new->filter('.byline .author')->text();
             
             preg_match("/href=\"(.*?)\"/i", $titleHtml, $matches);
             $linkNode = $matches[0];
 
-            $this->results[0][] = $new->filter('.c_h.headline')->text();
-            $this->results[1][] = $autorNode;
-            $this->results[2][] = "https://elpais.com".$linkNode;
-            $this->results[3][] = "El País";
+            $this->pais[0][] = $new->filter('.c_h.headline')->text();
+            $this->pais[1][] = $autorNode;
+            $this->pais[2][] = "https://elpais.com".$linkNode;
+            $this->pais[3][] = "El País";
 
         });
 
-        $elPais = $this->results;
+        $elPais = $this->pais;
 
         return $elPais;
     }

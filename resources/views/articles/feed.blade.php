@@ -43,7 +43,7 @@
             </div>
         @endforeach
     </div>
-    <div class="container">
+    <div class="">
     {{$feeds->links()}}
     </div>
 

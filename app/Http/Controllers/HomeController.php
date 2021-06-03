@@ -25,8 +25,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $elMundo = $this->scrapingElMundo();
         $elPais = $this->scrapingElPais();
+        $elMundo = $this->scrapingElMundo();
 
         $feed = Feed::orderBy('updated_at', 'desc')->paginate(3);
         return view('home', array(
