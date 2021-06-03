@@ -7,7 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name', 'DailyTrends') }}</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -30,9 +30,9 @@
                 <a class="navbar-brand text-white" href="{{ url('/') }}">
                     DailyTrends
                 </a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
+                <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
-                </button>
+                </button> -->
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
@@ -44,7 +44,7 @@
                     </ul>
                     <form class="navbar-form mt-auto navbar-left" role="search" action="">
                         <div class="form-group d-inline-flex mb-0">
-                            <input type="text" class="form-control" placeholder="Busca entre nuestros artículos" name="search"/>
+                            <input type="text" class="form-control" style="min-width: 300px;" placeholder="Busca entre nuestros artículos" name="search"/>
                             <button type="submit" class="btn btn-default">
                                 <span><i class="fas fa-search text-white"></i></span>
                             </button>
